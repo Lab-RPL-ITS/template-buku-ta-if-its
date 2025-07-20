@@ -16,6 +16,7 @@
 
 % Pengaturan jenis karakter
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 
 % Pengaturan pewarnaan
 \usepackage[table,xcdraw]{xcolor}
@@ -121,6 +122,8 @@
   showstringspaces=false,
   upquote=true,
   tabsize=2,
+  columns=flexible,
+  literate={"}{\textquotedbl}1
 }
 \lstset{style=codestyle}
 
