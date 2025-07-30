@@ -67,14 +67,18 @@
 
 % Pengaturan halaman kosong
 \newcommand{\currentpagestyle}{fancy}
-\let\customizedcleardoublepage\cleardoublepage
+\let\origdoublepage\cleardoublepage
+\newcommand{\clearemptydoublepage}{%
+  \clearpage
+  {\thispagestyle{empty}\origdoublepage}%
+}
 
+\let\customizedcleardoublepage\cleardoublepage
 \patchcmd{\customizedcleardoublepage}{\hbox{}}{
   \thispagestyle{\currentpagestyle}
   \vspace*{\fill}
   \begin{center}\textit{[Halaman ini sengaja dikosongkan]}\end{center}
   \vfill}{}{}
-
 \renewcommand{\cleardoublepage}[1][fancy]{
   \renewcommand{\currentpagestyle}{#1}
   \customizedcleardoublepage
@@ -169,7 +173,7 @@
 % Sampul luar Bahasa Indonesia
 \newcommand\covercontents{sampul/konten-id.tex}
 \input{sampul/sampul-luar.tex}
-\cleardoublepage[empty]
+\clearemptydoublepage
 
 % Atur ulang penomoran halaman
 \setcounter{page}{1}
