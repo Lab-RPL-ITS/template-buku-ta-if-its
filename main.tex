@@ -1,6 +1,6 @@
 % Judul dokumen
-\title{Buku Tugas Akhir ITS}
-\author{Musk, Elon Reeve}
+\title{Buku Tugas Akhir - \name{}}
+\author{\name{}}
 
 % Pengaturan ukuran teks dan bentuk halaman dua sisi
 \documentclass[12pt,twoside]{report}
@@ -12,7 +12,7 @@
 \usepackage[singlespacing]{setspace}
 
 % Pengaturan detail pada file PDF
-\usepackage[pdfauthor={\@author},bookmarksnumbered,pdfborder={0 0 0}]{hyperref}
+\usepackage[pdfauthor={\@author},bookmarksnumbered,pdfborder={0 0 0},linktoc=all]{hyperref}
 
 % Pengaturan jenis karakter
 \usepackage[utf8]{inputenc}
@@ -37,12 +37,48 @@
 \usepackage{wrapfig}
 \usepackage{float}
 
-% Definisi untuk "Hati ini sengaja dikosongkan"
-\patchcmd{\cleardoublepage}{\hbox{}}{
-  \thispagestyle{empty}
+% Pengaturan format daftar isi, daftar gambar, dan daftar tabel
+\usepackage[titles]{tocloft}
+
+% Definisi command untuk list of listings
+\newcommand{\cftloctitlefont}{}
+\newcommand{\cftafterloctitle}{}
+\setlength{\cftsecindent}{2em}
+\setlength{\cftsubsecindent}{3em}
+\setlength{\cftsubsubsecindent}{4em}
+\setlength{\cftbeforechapskip}{1.5ex}
+\setlength{\cftbeforesecskip}{1ex}
+\setlength{\cftbeforesubsecskip}{1ex}
+\setlength{\cftbeforesubsubsecskip}{1ex}
+\setlength{\cftbeforetoctitleskip}{0cm}
+\setlength{\cftbeforeloftitleskip}{4ex}
+\setlength{\cftafterloftitleskip}{0cm}
+\setlength{\cftbeforelottitleskip}{0cm}
+\setlength{\cftfigindent}{0pt}
+\setlength{\cfttabindent}{0pt}
+\renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries} % command untuk membuat heading bold dan besar
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftloftitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\cftlottitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftafterlottitle}{\hfill}
+\renewcommand{\cftloctitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftafterloctitle}{\hfill}
+
+% Pengaturan halaman kosong
+\newcommand{\currentpagestyle}{fancy}
+\let\customizedcleardoublepage\cleardoublepage
+
+\patchcmd{\customizedcleardoublepage}{\hbox{}}{
+  \thispagestyle{\currentpagestyle}
   \vspace*{\fill}
   \begin{center}\textit{[Halaman ini sengaja dikosongkan]}\end{center}
   \vfill}{}{}
+
+\renewcommand{\cleardoublepage}[1][fancy]{
+  \renewcommand{\currentpagestyle}{#1}
+  \customizedcleardoublepage
+}
 
 % Pengaturan penomoran halaman
 \usepackage{fancyhdr}
@@ -133,7 +169,7 @@
 % Sampul luar Bahasa Indonesia
 \newcommand\covercontents{sampul/konten-id.tex}
 \input{sampul/sampul-luar.tex}
-\cleardoublepage
+\cleardoublepage[empty]
 
 % Atur ulang penomoran halaman
 \setcounter{page}{1}
@@ -141,13 +177,12 @@
 % Sampul dalam Bahasa Indonesia
 \renewcommand\covercontents{sampul/konten-id.tex}
 \input{sampul/sampul-luar-tipis.tex}
-\clearpage
-\cleardoublepage
+\cleardoublepage[empty]
 
 % Sampul dalam Bahasa Inggris
 \renewcommand\covercontents{sampul/konten-en.tex}
 \input{sampul/sampul-luar-tipis.tex}
-\cleardoublepage
+\cleardoublepage[empty]
 
 % Label tabel dan gambar dalam bahasa indonesia
 \renewcommand{\figurename}{Gambar}
@@ -158,6 +193,9 @@
 
 % Pengaturan ukuran spasi paragraf
 \setlength{\parskip}{1ex}
+
+% Nomor halaman pembuka dimulai dari sini
+\pagenumbering{roman}
 
 % Lembar pengesahan
 \input{lainnya/lembar-pengesahan.tex}
@@ -170,9 +208,6 @@
 \cleardoublepage
 \input{lainnya/pernyataan-keaslian-en.tex}
 \cleardoublepage
-
-% Nomor halaman pembuka dimulai dari sini
-\pagenumbering{roman}
 
 % Abstrak Bahasa Indonesia
 \input{abstrak/abstrak-id.tex}
@@ -187,18 +222,21 @@
 \cleardoublepage
 
 % Daftar isi
+\phantomsection
 \renewcommand*\contentsname{DAFTAR ISI}
 \addcontentsline{toc}{chapter}{\contentsname}
 \tableofcontents
 \cleardoublepage
 
 % Daftar gambar
+\phantomsection
 \renewcommand*\listfigurename{DAFTAR GAMBAR}
 \addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures
 \cleardoublepage
 
 % Daftar tabel
+\phantomsection
 \renewcommand*\listtablename{DAFTAR TABEL}
 \addcontentsline{toc}{chapter}{\listtablename}
 \listoftables
