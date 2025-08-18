@@ -192,6 +192,7 @@
 % Label tabel dan gambar dalam bahasa indonesia
 \renewcommand{\figurename}{Gambar}
 \renewcommand{\tablename}{Tabel}
+\renewcommand{\lstlistingname}{Kode Sumber}
 
 % Pengaturan ukuran indentasi paragraf
 \setlength{\parindent}{2em}
@@ -250,6 +251,12 @@
 \renewcommand*\listtablename{DAFTAR TABEL}
 \addcontentsline{toc}{chapter}{\listtablename}
 \listoftables
+\cleardoublepage
+
+\phantomsection
+\renewcommand*\lstlistlistingname{DAFTAR KODE SUMBER}
+\addcontentsline{toc}{chapter}{\lstlistlistingname}
+\lstlistoflistings
 \cleardoublepage
 
 % Nomor halaman isi dimulai dari sini
