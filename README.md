@@ -1,7 +1,7 @@
 # Template LaTeX Buku Tugas Akhir Departemen Teknik Informatika ITS
 
 [![latest version](https://img.shields.io/github/v/release/Lab-RPL-ITS/template-buku-ta-if-its)](https://github.com/Lab-RPL-ITS/template-buku-ta-if-its/releases/)
-[![commits since latest version](https://img.shields.io/github/commits-since/Lab-RPL-ITS/template-buku-ta-if-its/latest)](https://github.com/Lab-RPL-ITS/template-buku-ta-if-its/commits/master)
+[![commits since latest version](https://img.shields.io/github/commits-since/Lab-RPL-ITS/template-buku-ta-if-its/latest)](https://github.com/Lab-RPL-ITS/template-buku-ta-if-its/commits/main)
 [![repo size](https://img.shields.io/github/repo-size/Lab-RPL-ITS/template-buku-ta-if-its)](https://github.com/Lab-RPL-ITS/template-buku-ta-if-its)
 [![license](https://img.shields.io/github/license/Lab-RPL-ITS/template-buku-ta-if-its)](./LICENSE)
 [![build status](https://img.shields.io/github/actions/workflow/status/Lab-RPL-ITS/template-buku-ta-if-its/ci.yaml?branch=main)](https://github.com/Lab-RPL-ITS/template-buku-ta-if-its/actions/workflows/ci.yaml)
