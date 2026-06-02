@@ -128,7 +128,14 @@
   \fi}
 
 % Pengaturan format judul bab
-\usepackage{titlesec}
+\usepackage[nostruts]{titlesec}
+
+% Patch from https://tex.stackexchange.com/a/59392
+% Removes the hidden \vspace* that titlesec adds above every chapter
+\makeatletter
+\patchcmd{\ttl@mkchap@i}{\vspace*{\@tempskipa}}{}{}{}
+\makeatother
+
 \titleformat{\chapter}[display]{\bfseries\Large}{BAB \centering\Roman{chapter}}{0ex}{\vspace{0ex}\centering}
 \titleformat{\section}{\bfseries\large}{\MakeUppercase{\thesection}}{1ex}{\vspace{1ex}}
 \titleformat{\subsection}{\bfseries\large}{\MakeUppercase{\thesubsection}}{1ex}{}
